@@ -12,13 +12,18 @@ const Home = () => {
         },
 
         {
-            title: 'Acing Data structures and Algorithms', author: 'Chidera', body: 'Lorem impsum ...', id: 3
+            title: 'Physics of the seventh Dimension', author: 'Damilola', body: 'Lorem impsum ...', id: 3
+        },
+
+        {
+            title: 'Acing Data structures and Algorithms', author: 'Ayobami', body: 'Lorem impsum ...', id: 4
         }
     ]);
 
     return(
         <div className="home">
            <BlogList blogs={blogs} title="All Blogs"/>
+           <BlogList blogs={blogs.filter((blog) => blog.author === 'Damilola')} title="Damilola's Blog"/>
         </div>
     );
 }
