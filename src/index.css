@@ -54,3 +54,7 @@
   color: rgb(122, 122, 243);
   margin-bottom: 8px;
 }
+
+.blog-preview a {
+  text-decoration: none;
+}
