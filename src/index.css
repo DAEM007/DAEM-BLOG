@@ -58,3 +58,13 @@
 .blog-preview a {
   text-decoration: none;
 }
+
+/* BLOG DETAILS STYLES */
+.blog-details h2 {
+  color: rgb(122, 122, 243);
+  font-size: 20px;
+}
+
+.blog-details p {
+  margin: 10px 0;
+}
