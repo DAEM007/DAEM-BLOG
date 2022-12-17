@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+// All firebase import
+import { db } from "./Firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 const Create = () => {
 
     const [title, setTitle] = useState('');
@@ -11,15 +15,16 @@ const Create = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const blog = {title, body, author};
+
+        // assign the blog object to a variable 'blog'
+        const blog = { title, body, author };
+
+        // reference to the database collection
+        const colRef = collection(db, 'blogs');
 
         setIsPending(true);
 
-        fetch('http://localhost:9000/blogs', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(blog)
-        })
+        addDoc(colRef, blog)
         .then(() => {
             console.log('New blog added');
             setIsPending(false);
