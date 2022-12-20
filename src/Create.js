@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 // All firebase import
-import { db } from "./Firebase";
+import { db } from "./firebase/Firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const Create = () => {

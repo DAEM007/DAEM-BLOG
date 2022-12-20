@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // All firebase import here...
-import { db } from "./Firebase";
+import { db } from "./firebase/Firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 
 const useFetch = (col) => {
