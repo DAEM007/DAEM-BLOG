@@ -1,3 +1,6 @@
+// styles import
+import './BlogList.css'
+
 import { Link } from "react-router-dom"; 
 
 const BlogList = ({blogs, title}) => {
