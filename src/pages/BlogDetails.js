@@ -1,10 +1,12 @@
+// styles import
+import './BlogDetails.css';
+
 import { useEffect, useState } from "react";
 import { useHistory, useParams} from "react-router-dom";
 
 // All firebase imports
 import { db } from "../firebase/Firebase";
 import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
-
 
 
 const BlogDetails = () => {
