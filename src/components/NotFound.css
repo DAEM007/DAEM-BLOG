@@ -1,0 +1,19 @@
+
+/* not found page styles */
+.not-found h2 {
+    color: rgb(122, 122, 243);
+    margin-bottom: 10px;
+  }
+  
+  .not-found p {
+    margin-bottom: 10px;
+  }
+  
+  .not-found a {
+    text-decoration: none;
+    color: rgb(122, 122, 243);
+  }
+  
+  .not-found a:hover {
+    color: rgb(9, 9, 218);
+  }
