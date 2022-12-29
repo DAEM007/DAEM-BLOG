@@ -1,0 +1,21 @@
+
+
+/* BLOG DETAILS STYLES */
+.blog-details h2 {
+    color: rgb(122, 122, 243);
+    font-size: 20px;
+  }
+  
+  .blog-details p {
+    margin: 10px 0;
+  }
+  
+  .blog-details button {
+    background: rgb(122, 122, 243);
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
