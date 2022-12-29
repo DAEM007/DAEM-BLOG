@@ -1,3 +1,6 @@
+// styles import
+import './Create.css';
+
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -59,7 +62,7 @@ const Create = () => {
                     <option value="Emmanuel">Emmanuel</option>
                 </select>
                 { !isPending && <button>Add Blog</button>}
-                { isPending && <button>Addiing Blog...</button>}
+                { isPending && <button>Adding Blog...</button>}
             </form>
         </div>
      );
