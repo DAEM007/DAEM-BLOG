@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isPending, setIsPending] = useState(false);
 
     const onLogin = () => {
         console.log('New user Logged in');
@@ -16,26 +17,28 @@ const Login = () => {
         <div className='login'>
             <h2>Login here...</h2>
            <form onSubmit={onLogin}>
-            <label>Email</label>
-            <input type="text"
-            required
-            value={ email }
-            placeholder = 'Email address'
-            onChange = { (e) => setEmail(e.target.value) }
-            />
+                <label>Email</label>
+                <input type="text"
+                required
+                value={ email }
+                placeholder = 'Email address'
+                onChange = { (e) => setEmail(e.target.value) }
+                />
 
-            <label>Password</label>
-            <input type="text"
-            required
-            value={ password }
-            placeholder = 'Password'
-            onChange = { (e) => setPassword(e.target.value) }
-            />
+                <label>Password</label>
+                <input type="text"
+                required
+                value={ password }
+                placeholder = 'Password'
+                onChange = { (e) => setPassword(e.target.value) }
+                />
+                {!isPending && <button>Login</button>}
+                {isPending && <button>Logging in...</button>}
            </form>
 
            <p>
-            No account yet?
-            <Link to='/SignUp'>Sign up</Link>
+                No account yet?
+                <Link to='/SignUp'>Sign up</Link>
            </p>
         </div>
     );
