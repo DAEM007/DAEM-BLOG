@@ -22,7 +22,7 @@ const BlogDetails = () => {
         
         onSnapshot(docRef, (doc) => {
             let data = doc.data();
-            console.log(data);
+            // console.log(data);
             setBlog(data);
             setIsPending(false);
         })
