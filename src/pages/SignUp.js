@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+// All firebase imports
+import { auth } from "../firebase/Firebase";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 
 
 const SignUp = () => {
@@ -6,10 +10,42 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
+    const [error, setError] = useState(null);
+    const history = useHistory();
     
+    const onSignUp = (e) => {
+        e.preventDefault();
 
-    const onSignUp = () => {
-        console.log(`Welcome new user`);
+        setIsPending(true);
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                console.log('user has been created');
+            })
+            .catch((err) => {
+                // console.log(err.message);
+                setError(err.message);
+                setIsPending(false);
+            })
+
+            onAuthStateChanged(auth, (user) => {
+                if(user !== null){
+                    updateProfile(user, { displayName: name })
+                        .then(() => {
+                            console.log('user profile updated');
+                            console.log(user);
+                            setIsPending(false);
+                            history.push('/');
+                        })
+                        .catch((err) => {
+                            console.log(err.message);
+                            setIsPending(false);
+                        })
+                }
+            })
+
+        
+
     }
 
     return ( 
@@ -33,7 +69,7 @@ const SignUp = () => {
                 />
 
                 <label>Password</label>
-                <input type="text"
+                <input type="password"
                 required
                 value={ password }
                 placeholder = 'Password'
@@ -41,6 +77,7 @@ const SignUp = () => {
                 />
                 {!isPending && <button>Sign Up</button>}
                 {isPending && <button>Signing up...</button>}
+                {error && <p>{ error }</p>}
             </form>
 
         </div>
