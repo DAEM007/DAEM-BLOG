@@ -1,16 +1,35 @@
 // styles import
 import './Login.css';
-
+// all react imports
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+// all firebase imports
+import { auth } from '../firebase/Firebase';
+import { signInWithEmailAndPassword } from "firebase/auth"
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
+    const [error, setError] = useState(null);
+    const history = useHistory();
 
-    const onLogin = () => {
-        console.log('New user Logged in');
+    const onLogin = (e) => {
+        e.preventDefault();
+
+        setIsPending(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((cred) => {
+                console.log(cred.user);
+                setIsPending(false);
+                history.push('/');
+            })
+            .catch((err) => {
+                // console.log(err.message);
+                setError(err.message);
+                setIsPending(false);
+            })
+
     }
 
     return (
@@ -26,7 +45,7 @@ const Login = () => {
                 />
 
                 <label>Password</label>
-                <input type="text"
+                <input type="password"
                 required
                 value={ password }
                 placeholder = 'Password'
@@ -34,6 +53,7 @@ const Login = () => {
                 />
                 {!isPending && <button>Login</button>}
                 {isPending && <button>Logging in...</button>}
+                {error && <p>{ error }</p>}
            </form>
 
            <p>
