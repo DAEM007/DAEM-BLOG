@@ -1,31 +1,31 @@
-import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// All pages/component imports
 import Home from './pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Create from './pages/Create';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './components/NotFound';
+import NavBar from './components/NavBar';
 
 
 function App() {
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <NavBar/>
         <div className="content">
-          <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/Login' component={Login}/>
-            <Route path='/SignUp' component={SignUp}/>
-            <Route path='/create' component={Create}/>
-            <Route path='/blogs/:id' component={BlogDetails}/>
-            <Route path='/*' component={NotFound}/>
-          </Switch>
+          <Routes>
+            <Route path='/' element={ <Home /> }/>
+            <Route path='/Login' element={ <Login /> }/>
+            <Route path='/SignUp' element={ <SignUp /> }/>
+            <Route path='/create' element={ <Create /> }/>
+            <Route path='/blogs/:id' element={ <BlogDetails /> }/>
+            <Route path='/*' element={ <NotFound /> }/>
+          </Routes>
         </div>
-      </div>
-    </Router>
-    
+      </Router>
+    </div>
   );
 }
 
