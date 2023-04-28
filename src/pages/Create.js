@@ -2,7 +2,7 @@
 import './Create.css';
 
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // All firebase import
 import { db } from "../firebase/Firebase";
@@ -14,7 +14,7 @@ const Create = () => {
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('');
     const [isPending, setIsPending] = useState(false); 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +31,7 @@ const Create = () => {
         .then(() => {
             console.log('New blog added');
             setIsPending(false);
-            history.push('/');
+            navigate('/');
         })
         
     }
