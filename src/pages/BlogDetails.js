@@ -2,7 +2,7 @@
 import './BlogDetails.css';
 
 import { useEffect, useState } from "react";
-import { useHistory, useParams} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 
 // All firebase imports
 import { db } from "../firebase/Firebase";
@@ -11,7 +11,7 @@ import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 
 const BlogDetails = () => {
     const { id } = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [ blog, setBlog ] = useState(null);
     const [isPending, setIsPending] = useState(true);
 
@@ -33,10 +33,10 @@ const BlogDetails = () => {
     const handleDelete = () =>  {
         deleteDoc(docRef)
             .then(() => {
-                history.push('/');
+                navigate('/');
                 setIsPending(false);
             })
-        console.log('Docuent deleted');
+        console.log('Document deleted');
     }
 
     return ( 

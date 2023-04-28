@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // All firebase imports
 import { auth } from "../firebase/Firebase";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
@@ -11,7 +11,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);
-    const history = useHistory();
+    const navigate = useNavigate();
     
     const onSignUp = (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ const SignUp = () => {
                             console.log('user profile updated');
                             console.log(user);
                             setIsPending(false);
-                            history.push('/');
+                            navigate('/');
                         })
                         .catch((err) => {
                             console.log(err.message);

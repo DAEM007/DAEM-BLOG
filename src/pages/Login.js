@@ -2,7 +2,7 @@
 import './Login.css';
 // all react imports
 import { useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // all firebase imports
 import { auth } from '../firebase/Firebase';
 import { signInWithEmailAndPassword } from "firebase/auth"
@@ -12,7 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const onLogin = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
             .then((cred) => {
                 console.log(cred.user);
                 setIsPending(false);
-                history.push('/');
+                navigate('/');
             })
             .catch((err) => {
                 // console.log(err.message);
