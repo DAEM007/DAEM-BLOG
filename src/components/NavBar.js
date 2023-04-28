@@ -29,7 +29,7 @@ const NavBar = () => {
                 <Link to="/">Home</Link>
                 <Link to="/Login">Login</Link>
                 <button onClick={onLogOut}>Log out</button>
-                {/* <Link to="/create">New Blog</Link> */}
+                <Link to="/create">New Blog</Link>
             </div>
         </nav>
     );
